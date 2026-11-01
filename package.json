@@ -1,12 +1,19 @@
 {
   "name": "@mohak34/opencode-notifier",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "OpenCode plugin that sends system notifications and plays sounds when permission is needed, generation completes, or errors occur",
   "author": "mohak34",
   "license": "MIT",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./server": "./dist/server.js",
+    "./tui": "./dist/tui.js",
+    "./rpc": "./dist/rpc.js",
+    "./gui-experimental": "./dist/gui-experimental.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mohak34/opencode-notifier.git"
@@ -21,7 +28,7 @@
     "logos"
   ],
   "scripts": {
-    "build": "bun build src/index.ts --outdir dist --target node --external node-notifier",
+    "build": "bun build src/index.ts src/server.ts src/tui.ts src/rpc.ts src/gui-experimental.ts --outdir dist --target node --external node-notifier",
     "prepublishOnly": "bun run build",
     "typecheck": "tsc --noEmit",
     "test": "bun test"
